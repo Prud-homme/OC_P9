@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Inscription</h2>
+    <h3 class="text-center mt-3">Inscription</h3>
     {% if form.errors %}
         {{ form.errors }}
     {% endif %}
+    <div class="d-flex flex-column align-items-center m-5">
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit" >S’inscrire</button>
-        <button><a href="{% url 'login' %}">Retourner</a></button>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-dark mr-5" href="{% url 'login' %}">Retourner</a>
+            <button class="btn btn-dark " type="submit" >S’inscrire</button>
+        
+        </div>
     </form>
+    </div>
 {% endblock content %}
