@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 import authentication.views
 import reviewsapp.views
 
@@ -36,5 +40,11 @@ urlpatterns = [
             template_name='authentication/password_change_done.html'),
         name='password_change_done'),
     path('home/', reviewsapp.views.home, name='home'),
+    path('ticket/create/', reviewsapp.views.ticket_create, name='ticket_create'),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()
