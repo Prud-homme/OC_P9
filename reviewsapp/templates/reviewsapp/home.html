@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     <p>Bienvenu sur LITReview</p>
+    <a href="{% url 'ticket-create' %}">Créer un ticket</a>
+    <p>Liste des tickets</p>
+    <a href=""></a>
+    {% for ticket in tickets %}
+        Titre
+        {{ ticket.title }}
+        Description
+        {{ ticket.description }}
+        Image
+        <img src="{{ ticket.image_url }}" class="ticket-preview">
+    {% endfor %}
 {% endblock content %}

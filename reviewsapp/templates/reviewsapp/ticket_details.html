@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+Titre
+{{ ticket.title }}
+Description
+{{ ticket.description }}
+Image
+<img src="{{ ticket.image_url }}" class="ticket-preview">
+{% endblock content %}
