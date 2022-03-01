@@ -1,18 +1,48 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <h3 class="text-center mt-3">Inscription</h3>
-    {% if form.errors %}
-        {{ form.errors }}
-    {% endif %}
-    <div class="d-flex flex-column align-items-center m-5">
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <div class="d-flex justify-content-end">
-            <a class="btn btn-dark mr-5" href="{% url 'login' %}">Retourner</a>
-            <button class="btn btn-dark " type="submit" >S’inscrire</button>
-        
+<div class="d-flex flex-column flex-md-row justify-content-evenly align-items-center flex-grow-1 m-2">
+  <img src="{% static 'authentication/media/fill-out.svg' %}" class="svg-preview" alt="sign-in" />
+  
+  <div class="bg-success rounded p-3 text-light">
+    <h4 class="text-center">Inscription</h4>
+    
+    <form class="d-flex flex-column" method="post">
+      <input type="text" class="form-control maxw-px-400 ms-md-2 mt-3 mb-3" placeholder="Nom d'utilisateur" value="{{ form.username.value|default_if_none:'' }}" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username">
+      <span class="helptext fst-italic">Requis. 150 caractères maximum. Uniquement des lettres, nombres et les caractères « @ », « . », « + », « - » et « _ ».</span>
+      
+      
+      <input type="password" placeholder="Mot de passe" class="form-control maxw-px-400 ms-md-2 mt-3 mb-3" name="password1" autocomplete="new-password" required id="id_password1">
+      
+      <span class="helptext fst-italic">
+        <ul>
+          <li>Votre mot de passe ne peut pas trop ressembler à vos autres informations personnelles.</li>
+          <li>Votre mot de passe doit contenir au minimum 8 caractères.</li>
+          <li>Votre mot de passe ne peut pas être un mot de passe couramment utilisé.</li>
+          <li>Votre mot de passe ne peut pas être entièrement numérique.</li>
+        </ul>
+      </span>
+      
+
+      <input type="password" placeholder="Confirmation du mot de passe" class="form-control maxw-px-400 ms-md-2 mt-3 mb-3" name="password2" autocomplete="new-password" required id="id_password2">
+      <span class="helptext fst-italic">Saisissez le même mot de passe que précédemment, pour vérification.</span>
+
+      {% if form.errors %}
+      {{ form.errors }}
+      {% endif %}
+
+      {% csrf_token %}
+      <div class="d-flex align-self-end mt-3 mt-xl-0">
+        <div class="bg-light rounded me-3">
+          <a class="btn btn-outline-dark" href="{% url 'login' %}"><i class="bi bi-arrow-left-circle"></i> Retourner</a>
         </div>
+        <div class="bg-light rounded">
+          <button class="btn btn-outline-dark" type="submit"><i class="bi bi-check-circle"></i> S’inscrire</button>
+        </div>
+      </div>
     </form>
     </div>
+  </div>
+</div>
 {% endblock content %}
+

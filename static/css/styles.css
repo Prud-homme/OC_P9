@@ -1,0 +1,24 @@
+.ticket-preview {
+  max-height: 150px;
+}
+
+.svg-preview {
+  max-height: 350px;
+  max-width: 300px;
+}
+
+.bg-bro {
+  background-color:  #def6e5;
+}
+
+.maxw-px-400 {
+  max-width: 400px;
+}
+
+.maxw-px-800 {
+  max-width: 800px;
+}
+
+.minw-px-300 {
+  min-width: 300px;
+}
