@@ -2,14 +2,20 @@
 {% block content %}
     <p>Bienvenu sur LITReview</p>
     <a href="{% url 'ticket-create' %}">Créer un ticket</a>
+    <a href="{% url 'review-create' %}">Créer une critique</a>
+    <a href="{% url 'review-create' '19' %}">Créer une critique (19)</a>
     <p>Liste des tickets</p>
-    <a href=""></a>
     {% for ticket in tickets %}
-        Titre
-        {{ ticket.title }}
-        Description
-        {{ ticket.description }}
-        Image
-        <img src="{{ ticket.image_url }}" class="ticket-preview">
+        <p class="mt-2">Titre: {{ ticket.title }}</p>
+        <p class="mt-2 mb-2">Description: {{ ticket.description }}</p>
+        <div><img src="{{ ticket.image_url|default_if_none:'/static/reviewsapp/media/no-image-available.svg' }}" class="ticket-preview"></div>
+        <a href="{% url 'ticket-details' ticket.id %}">Voir le ticket</a>
+
+    {% endfor %}
+    <p>Liste des critique</p>
+    {% for review in reviews %}
+        <p class="mt-2">Titre: {{ review.headline }}</p>
+        <a href="{% url 'review-details' review.id %}">Voir la critique</a>
+
     {% endfor %}
 {% endblock content %}

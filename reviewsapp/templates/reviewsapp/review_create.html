@@ -7,8 +7,19 @@
 
   <div class="w-100 maxw-px-800 text-light p-3 bg-success rounded">
     <form class="d-flex flex-column" method="post" enctype="multipart/form-data">
-      <h4 class="text-center mt-2">Créer un ticket</h4>
-      {% include "reviewsapp/forms/ticket.html" %}
+      <h4 class="text-center mt-2">Créer une critique</h4>
+      <div class="bg-light text-dark p-3 rounded d-flex flex-column align-items-center w-100 mt-2 mb-2">
+        {% if  ticket is None %}
+          {% include "reviewsapp/forms/ticket.html" %}
+        {% endif %}
+
+        {% if  ticket is not None %}
+          {% include "reviewsapp/ticket_view.html" with ticket=ticket %}
+        {% endif %}
+      </div>
+
+      {% include "reviewsapp/forms/review.html" %}
+
       {% csrf_token %}
       <div class="d-flex align-self-end mt-3">
         {% include "reviewsapp/buttons/home.html" %}

@@ -1,10 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1>Mise à jour du groupe</h1>
+<div class="d-flex flex-column flex-md-row flex-grow-1 justify-content-evenly align-items-center m-3"> 
+  <img src="{% static 'reviewsapp/media/ticket-update.svg' %}" class="card-img-top svg-preview" alt="create ticket" />
+  <div class="bg-success text-light rounded p-3 w-100 maxw-px-800">
+    <h4 class="text-center">Modifier le ticket</h4>
+    <form class="d-flex flex-column" method="post" enctype="multipart/form-data">
+      <p>Titre</p>
+      <input type="text" class="form-control maxw-px-400" value="{{ ticket.title }}" aria-label="Title" name="title" maxlength="128" required id="id_title">
+      <p class="mt-2">Description</p>
+      <textarea class="form-control" aria-label="Description" name="description" maxlength="2048" id="id_description">{{ ticket.description }}</textarea>
+      
+      <div class="d-flex flex-column flex-sm-row align-items-sm-end">
+        <div>
+          <label class="mt-2 mb-2"for="id_image">Image actuelle:</label>
+          <div><img src="{{ ticket.image_url|default_if_none:''}}" class="ticket-preview"></div>
+        </div>
+        <div class="ms-sm-2">
+          <p class="mt-2 mb-2">Remplacer par:</p>
+          <input type="file" class="form-control maxw-px-400" aria-label="Image" name="image" accept="image/*" id="id_image">
+        </div>
+      </div>
 
-  <form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Envoyer">
- </form>
+      {% csrf_token %}
+      <div class="d-flex align-self-end mt-3">
+        <div class="bg-light rounded me-3">
+          <a class="btn btn-outline-dark" href="{% url 'ticket-details' ticket.id %}"><i class="bi bi-arrow-left-circle"></i> Annuler</a>
+        </div>
+        <div class="bg-light rounded">
+          <button class="btn btn-outline-dark" type="submit"><i class="bi bi-check-circle"></i> Envoyer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock content %}
