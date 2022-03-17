@@ -1,0 +1,25 @@
+<div class="w-100 maxw-px-800 m-2">
+  <div class="bg-success text-light p-3 rounded d-flex flex-column align-items-center">
+    {% if user.id == review.user.id %}
+      <p>Vous avez publié une critique - {{ review.time_created }}</p>
+    {% else %}
+      <p>@{{ review.user.username }} a publié une critique - {{ review.time_created }}</p>
+    {% endif %}
+
+    <div class="bg-light text-dark p-3 rounded d-flex flex-column align-items-center w-100">
+      {% include "reviewsapp/details/ticket_content.html" with ticket=review.ticket %}
+    </div>
+    
+    {% include "reviewsapp/details/review_content.html" with review=review %}
+
+    
+    {% if user.id == review.user.id %}
+      <div class="d-flex align-self-end mt-3">
+        {% include "reviewsapp/buttons/a_master.html" with url_name='review-update' object_id=review.id button_icon='bi bi-pencil-fill' button_name='Modifier' %}
+        {% include "reviewsapp/buttons/a_delete.html" with url_name='review-delete' object_id=review.id button_icon='bi bi-trash-fill' button_name='Supprimer' %}
+      </div>
+    {% endif %}
+    
+  </div>
+
+</div>

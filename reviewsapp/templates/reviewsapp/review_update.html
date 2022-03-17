@@ -3,7 +3,7 @@
 {% block content %}
 <div class="d-flex flex-column flex-md-row-reverse flex-grow-1 justify-content-evenly align-items-center m-3">
 
-  <img src="{% static 'reviewsapp/media/ticket-create.svg' %}" class="card-img-top svg-preview" alt="create ticket" />
+  <img src="{% static 'reviewsapp/media/update.svg' %}" class="card-img-top svg-preview" alt="create ticket" />
 
   <div class="w-100 maxw-px-800 text-light p-3 bg-success rounded">
     <form class="d-flex flex-column" method="post" enctype="multipart/form-data">
@@ -83,7 +83,7 @@
       {% csrf_token %}
       <div class="d-flex align-self-end mt-3">
         <div class="bg-light rounded me-3">
-          <a class="btn btn-outline-dark" href="{% url 'review-details' review.id %}"><i class="bi bi-arrow-left-circle"></i> Annuler</a>
+          <a class="btn btn-outline-dark" href="{% url 'home' %}"><i class="bi bi-arrow-left-circle"></i> Annuler</a>
         </div>
         <div class="bg-light rounded">
           <button class="btn btn-outline-dark" type="submit"><i class="bi bi-check-circle"></i> Envoyer</button>

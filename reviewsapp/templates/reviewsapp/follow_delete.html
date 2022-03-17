@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="d-flex flex-column-reverse flex-md-row justify-content-evenly align-items-center flex-grow-1 m-2">
+  <div class="w-100 maxw-px-800 mx-2 mx-xl-0">
+    <h4 class="bg-dark rounded-top text-center text-danger m-0 mt-2 p-2">Souhaitez-vous vraiment vous désabonner de l'utilisateur {{followed_user.username}} ?</h4>
+    <div class="bg-success text-light p-3 rounded-bottom d-flex justify-content-evenly">
+     
+        {% include "reviewsapp/buttons/a_master_only_url.html" with url_name='follow' button_icon='bi bi-arrow-left-circle' button_name='Annuler' %}
+        {% include "reviewsapp/buttons/delete.html" %}
+      
+    </div>
+
+  </div>
+  <img src="{% static 'reviewsapp/media/delete.svg' %}" class="card-img-top svg-preview" alt="create ticket" />
+</div>
+
+{% endblock content %}

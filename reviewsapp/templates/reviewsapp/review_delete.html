@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="d-flex flex-column-reverse flex-md-row justify-content-evenly align-items-center flex-grow-1 m-2">
+  <div class="w-100 maxw-px-800 mx-2 mx-xl-0">
+    <h4 class="bg-dark rounded-top text-center text-danger m-0 mt-2 p-2">Confirmer la suppression de cette critique ?</h4>
+    <div class="bg-success text-light p-3 rounded-bottom d-flex flex-column align-items-center">
+      
+      <div class="bg-light text-dark p-3 rounded d-flex flex-column align-items-center w-100">
+        {% include "reviewsapp/details/ticket_content.html" with ticket=review.ticket %}
+      </div>
+      
+      {% include "reviewsapp/details/review_content.html" with review=review %}
+
+      <div class="d-flex align-self-end mt-3">
+        {% include "reviewsapp/buttons/cancel_home.html" %}
+        {% include "reviewsapp/buttons/delete.html" %}
+      </div>
+    </div>
+
+  </div>
+  <img src="{% static 'reviewsapp/media/delete.svg' %}" class="card-img-top svg-preview" alt="create ticket" />
+</div>
+
+{% endblock content %}

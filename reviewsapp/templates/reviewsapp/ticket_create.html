@@ -3,15 +3,15 @@
 {% block content %}
 <div class="d-flex flex-column flex-md-row-reverse flex-grow-1 justify-content-evenly align-items-center m-3">
 
-  <img src="{% static 'reviewsapp/media/ticket-create.svg' %}" class="card-img-top svg-preview" alt="create ticket" />
+  <img src="{% static 'reviewsapp/media/create.svg' %}" class="card-img-top svg-preview" alt="create ticket" />
 
   <div class="w-100 maxw-px-800 text-light p-3 bg-success rounded">
     <form class="d-flex flex-column" method="post" enctype="multipart/form-data">
-      <h4 class="text-center mt-2">Créer un ticket</h4>
+      <h4 class="text-center">Créer un ticket</h4>
       {% include "reviewsapp/forms/ticket.html" %}
       {% csrf_token %}
       <div class="d-flex align-self-end mt-3">
-        {% include "reviewsapp/buttons/home.html" %}
+        {% include "reviewsapp/buttons/cancel_home.html" %}
         {% include "reviewsapp/buttons/send.html" %}
       </div>
     </form>

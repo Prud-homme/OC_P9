@@ -1,3 +1,7 @@
+.mt-navbar {
+  margin-top: 60px;
+}
+
 .ticket-preview {
   max-height: 150px;
 }

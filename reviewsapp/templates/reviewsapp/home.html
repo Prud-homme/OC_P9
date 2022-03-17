@@ -1,21 +1,18 @@
 {% extends 'base.html' %}
+{% load utils %}
 {% block content %}
-    <p>Bienvenu sur LITReview</p>
-    <a href="{% url 'ticket-create' %}">Créer un ticket</a>
-    <a href="{% url 'review-create' %}">Créer une critique</a>
-    <a href="{% url 'review-create' '19' %}">Créer une critique (19)</a>
-    <p>Liste des tickets</p>
-    {% for ticket in tickets %}
-        <p class="mt-2">Titre: {{ ticket.title }}</p>
-        <p class="mt-2 mb-2">Description: {{ ticket.description }}</p>
-        <div><img src="{{ ticket.image_url|default_if_none:'/static/reviewsapp/media/no-image-available.svg' }}" class="ticket-preview"></div>
-        <a href="{% url 'ticket-details' ticket.id %}">Voir le ticket</a>
+  <div class="align-self-center">
+    <div class="w-100 d-flex justify-content-around mt-2">
+      <a class="btn btn-outline-success me-1" href="{% url 'ticket-create' %}"><i class="bi bi bi-plus-square"></i> Créer un ticket</a>
+      <a class="btn btn-outline-success ms-1" href="{% url 'review-create' %}"><i class="bi bi bi-plus-square"></i> Créer une critique</a>
+    </div>
 
+    {% for instance in tickets_and_reviews %}
+      {% if instance|model_type == 'Ticket' %}
+          {% include "reviewsapp/details/ticket.html" with ticket=instance%}
+      {% elif instance|model_type == 'Review' %}
+          {% include "reviewsapp/details/review.html" with review=instance%}
+      {% endif %}
     {% endfor %}
-    <p>Liste des critique</p>
-    {% for review in reviews %}
-        <p class="mt-2">Titre: {{ review.headline }}</p>
-        <a href="{% url 'review-details' review.id %}">Voir la critique</a>
-
-    {% endfor %}
+  </div>
 {% endblock content %}

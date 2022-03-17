@@ -1,0 +1,19 @@
+{% load utils %}
+<div class="w-100 maxw-px-800 m-2">
+  <div class="bg-success text-light p-3 rounded d-flex flex-column align-items-center">
+      
+    {% include "reviewsapp/details/ticket_content.html" with ticket=ticket %}
+      
+    <div class="d-flex align-self-end m-0">
+      {% if ticket|not_in_review %}
+        {% include "reviewsapp/buttons/a_master.html" with url_name='review-create' object_id=ticket.id button_icon='bi bi-plus-square' button_name='Répondre' %}
+      {% endif %}
+      {% if user.id == ticket.user.id %}
+        {% include "reviewsapp/buttons/a_master.html" with url_name='ticket-update' object_id=ticket.id button_icon='bi bi-pencil-fill' button_name='Modifier' %}
+        {% include "reviewsapp/buttons/a_delete.html" with url_name='ticket-delete' object_id=ticket.id button_icon='bi bi-trash-fill' button_name='Supprimer' %}
+      {% endif %}
+      
+    </div>
+  </div>
+
+</div>

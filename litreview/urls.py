@@ -57,13 +57,18 @@ urlpatterns = [
     path('home/', reviewsapp.views.home, name='home'),
 
     path('ticket/create/', reviewsapp.views.ticket_create, name='ticket-create'),
-    path('ticket/<int:ticket_id>/', reviewsapp.views.ticket_details, name='ticket-details'),
+    path('ticket/<int:ticket_id>/delete/', reviewsapp.views.ticket_delete, name='ticket-delete'),
     path('ticket/<int:ticket_id>/update/', reviewsapp.views.ticket_update, name='ticket-update'),
 
     path('review/create/', reviewsapp.views.review_create, name='review-create'),
     path('review/ticket-<int:ticket_id>/create/', reviewsapp.views.review_create, name='review-create'),
-    path('review/<int:review_id>/', reviewsapp.views.review_details, name='review-details'),
+    path('review/<int:review_id>/delete/', reviewsapp.views.review_delete, name='review-delete'),
     path('review/<int:review_id>/update/', reviewsapp.views.review_update, name='review-update'),
+
+    path('follow/', reviewsapp.views.follow, name='follow'),
+    path('follow/<int:follow_user_id>/delete/', reviewsapp.views.follow_delete, name='follow-delete'),
+
+    path('post/', reviewsapp.views.post, name='post'),
 ]
 
 if settings.DEBUG:
