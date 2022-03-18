@@ -12,14 +12,11 @@
     
     {% include "reviewsapp/details/review_content.html" with review=review %}
 
-    
     {% if user.id == review.user.id %}
       <div class="d-flex align-self-end mt-3">
         {% include "reviewsapp/buttons/a_master.html" with url_name='review-update' object_id=review.id button_icon='bi bi-pencil-fill' button_name='Modifier' %}
         {% include "reviewsapp/buttons/a_delete.html" with url_name='review-delete' object_id=review.id button_icon='bi bi-trash-fill' button_name='Supprimer' %}
       </div>
     {% endif %}
-    
   </div>
-
 </div>

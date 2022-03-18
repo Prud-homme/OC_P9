@@ -3,75 +3,67 @@
 {% block content %}
 <div class="d-flex flex-column flex-grow-1 justify-content-evenly align-items-center m-3">
   <div class="w-100 maxw-px-800 text-light p-3 bg-success rounded">
-  <form method="post">
-    <div class="d-flex flex-column bg-success">
-      <div class="text-center"><p>
-        Suivre d'autres utilisateurs
-      </p></div>
-      <div class="d-flex">
-  <template id="resultstemplate">
-    {% for instance in not_followed_users %}
-      <option>{{instance.username}}</option>
-    {% endfor %}
-  </template><datalist id="searchresults"></datalist>
-  {% csrf_token %}
-  <div class="input-group bg-light rounded">
-  <input type="text" class="form-control" name="followed_user" id="followed_user" placeholder="Rechercher un utilisateur..." list="searchresults" autocomplete="off" />
-  
-  <button class="btn btn-outline-dark" type="submit"><i class="bi bi-plus-circle"></i> Ajouter</button>
-  
-</div>
-</div>
-</div>
-</form></div>
+    <form method="post">
+      <div class="d-flex flex-column bg-success">
+        <div class="text-center">
+          <p>Suivre d'autres utilisateurs</p>
+        </div>
+        <div class="d-flex">
+          <template id="resultstemplate">
+            {% for instance in not_followed_users %}
+            <option>{{instance.username}}</option>
+            {% endfor %}
+          </template>
+          <datalist id="searchresults"></datalist>
+          {% csrf_token %}
+          <div class="input-group bg-light rounded">
+            <input type="text" class="form-control" name="followed_user" id="followed_user" placeholder="Rechercher un utilisateur..." list="searchresults" autocomplete="off" />
+            <button class="btn btn-outline-dark" type="submit"><i class="bi bi-plus-circle"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 
-<div class="d-flex mt-2 w-100 maxw-px-800 justify-content-evenly text-light">
-<div class="w-100 bg-success rounded p-3 me-2">
-<table class="table text-light">
-  <thead>
-    <tr>
-      <td class="text-center">Abonnements</td>
-    </tr>
-  </thead>
-  <tbody>
-    
-      {% for instance in followed_users %}
-  <tr><td> <div class="d-flex justify-content-between align-items-center">
-    <p class="m-0">{{ instance.username }}</p>
-    {% include "reviewsapp/buttons/a_delete.html" with url_name='follow-delete' object_id=instance.id button_icon='bi bi-person-dash-fill' button_name='Se désabonner' %}
+  <div class="d-flex mt-2 w-100 maxw-px-800 justify-content-evenly text-light">
+    <div class="w-100 bg-success rounded p-3 me-2">
+      <table class="table text-light">
+        <thead>
+          <tr>
+            <td class="text-center">Abonnements</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for instance in followed_users %}
+            <tr>
+              <td>
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="m-0">{{ instance.username }}</p>
+                  {% include "reviewsapp/buttons/a_delete.html" with url_name='follow-delete' object_id=instance.id button_icon='bi bi-person-dash-fill' button_name='Se désabonner' %}
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-     </td></tr>
-{% endfor %}
-    
-  </tbody>
-</table>
 
-
-
+    <div class="w-100 bg-success rounded p-3">
+      <table class="table text-light">
+        <thead>
+          <tr>
+            <td class="text-center">Abonnés</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for instance in followed_by %}
+            <tr><td>{{ instance.username }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<div class="w-100 bg-success rounded p-3">
-
-
-<table class="table text-light">
-  <thead>
-    <tr>
-      <td class="text-center">Abonnés</td>
-    </tr>
-  </thead>
-  <tbody>
-    
-      {% for instance in followed_by %}
-  <tr><td>{{ instance.username }}</td></tr>
-{% endfor %}
-    
-  </tbody>
-</table>
-
-</div>
-</div>
-</div>
-
-
 {% endblock content %}
 
 
