@@ -3,6 +3,7 @@
 ## Menu
 
 * [Installation](#installation-and-execution-using-venv-and-pip)
+* [Features for users](#features-for-users)
 
 ## Installation and execution using venv and pip
 
