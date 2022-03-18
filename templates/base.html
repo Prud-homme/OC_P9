@@ -24,19 +24,19 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                           <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Flux</a>
+                           <a class="nav-link {% if request.resolver_match.url_name == 'home' %}fw-bold active{% endif %}" aria-current="page" href="{% url 'home' %}">Flux</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link {% if request.resolver_match.url_name == 'post' %}active{% endif %}" href="{% url 'post' %}">Posts</a>
+                           <a class="nav-link {% if request.resolver_match.url_name == 'post' %}fw-bold active{% endif %}" href="{% url 'post' %}">Posts</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link {% if request.resolver_match.url_name == 'follow' %}active{% endif %}" href="{% url 'follow' %}">Abonnements</a>
+                           <a class="nav-link {% if request.resolver_match.url_name == 'follow' %}fw-bold active{% endif %}" href="{% url 'follow' %}">Abonnements</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
                         </li>
                      </ul>
-                     <p class="text-light m-0"><i class="bi bi-person-circle"></i> {{request.user.username}}</p>
+                     <p class="text-success fw-bold m-0"><i class="bi bi-person-circle"></i> {{request.user.username}}</p>
                   </div>
                   {% endif %}
                </div>
