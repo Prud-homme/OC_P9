@@ -2,50 +2,28 @@
 
 ## Menu
 
-* [Program setup](#program-setup)
-* [Program execution](#program-execution)
+* [Installation](#installation-and-execution-using-venv-and-pip)
 
-## Program setup - Creation of a virtual environment
+## Installation and execution using venv and pip
 
-**On Windows**
+⚠️ Git and Python must be installed first.
 
-```
-$ python3 -m venv c:\path\to\myenv
-$ myenv\Scripts\activate.bat
-```
+1. Clone this repository using `$ git clone https://github.com/Prud-homme/OC_P9.git` (you can also download the code [as a zip file](https://github.com/Prud-homme/OC_P9/archive/refs/heads/main.zip))
+2. Move to the OC_P9 root folder with `$ cd OC_P9`
+3. Create a virtual environment for the project with `$ python3 -m venv env`.
+4. Activate the virtual environment with `$ env\Scripts\activate` on windows or `$ source env/bin/activate` on macos or linux.
+5. Install project dependencies with `$ pip3 install -r requirements.txt`
+6. Create the project database with `$ python manage.py migrate`
+7. Run the server with `$ python manage.py runserver`
 
-**On Unix or MacOS**
+When the server is running after step 7 of the procedure, the Web App can be launch from the URL: [http://localhost:8000](http://localhost:8000 "LitReview Web App").
 
-```
-$ python3 -m venv /path/to/myenv
-$ source myenv/bin/activate
-```
+Steps 1-3 and 5-6 are only required for initial installation. For subsequent launches of the Web App, you only have to execute steps 4 and 7 from the root folder of the project.
 
-**To install packages from the requirements.txt file**
+🗒️ *Notes:*
+* *Depending on the installation of python it is possible that the `python3` command is not recognized under windows. In this case, you will have to replace `python3` by `python`.*
+* *To disable the virtual environment, run: `$ deactivate`.*
 
-```
-(myenv) $ pip3 install -r requirements.txt
-```
-
-**To disable the virtual environment, run:**
-
-```
-(myenv) $ deactivate
-```
-
-## Program execution
-
-When the virtual environment is activated and you are placed in the root folder, launch the program with the command:
-
-```
-(myenv) $ python3 manage.py runserver
-```
-
-🗒️ *Note: Depending on the installation of python it is possible that the `python3` command is not recognized under windows. In this case, you will have to replace `python3` by `python`.*
-
-## Web app
-
-To access the application, launch a web browser and navigate to [http://localhost:8000](http://localhost:8000 "LitReview Web App")
 
 ## flake8
 
