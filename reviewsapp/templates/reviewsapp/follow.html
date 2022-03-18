@@ -4,7 +4,11 @@
 <div class="d-flex flex-column flex-grow-1 justify-content-evenly align-items-center m-3">
   <div class="w-100 maxw-px-800 text-light p-3 bg-success rounded">
   <form method="post">
-    <div class="d-flex bg-success">
+    <div class="d-flex flex-column bg-success">
+      <div class="text-center"><p>
+        Suivre d'autres utilisateurs
+      </p></div>
+      <div class="d-flex">
   <template id="resultstemplate">
     {% for instance in not_followed_users %}
       <option>{{instance.username}}</option>
@@ -12,10 +16,11 @@
   </template><datalist id="searchresults"></datalist>
   {% csrf_token %}
   <div class="input-group bg-light rounded">
-  <input type="text" class="form-control" name="followed_user" id="followed_user" placeholder="Type to search..." list="searchresults" autocomplete="off" />
+  <input type="text" class="form-control" name="followed_user" id="followed_user" placeholder="Rechercher un utilisateur..." list="searchresults" autocomplete="off" />
   
   <button class="btn btn-outline-dark" type="submit"><i class="bi bi-plus-circle"></i> Ajouter</button>
   
+</div>
 </div>
 </div>
 </form></div>
@@ -25,7 +30,7 @@
 <table class="table text-light">
   <thead>
     <tr>
-      <td class="text-center">Utilisateurs suivis</td>
+      <td class="text-center">Abonnements</td>
     </tr>
   </thead>
   <tbody>

@@ -2,10 +2,12 @@
 {% load utils %}
 {% block content %}
   <div class="align-self-center">
-    <div class="w-100 d-flex justify-content-around mt-2">
-      <a class="btn btn-outline-success me-1" href="{% url 'ticket-create' %}"><i class="bi bi bi-plus-square"></i> Créer un ticket</a>
-      <a class="btn btn-outline-success ms-1" href="{% url 'review-create' %}"><i class="bi bi bi-plus-square"></i> Créer une critique</a>
-    </div>
+    {% if request.resolver_match.url_name == 'home' %}
+      <div class="w-100 d-flex justify-content-around mt-2">
+        <a class="btn btn-outline-success me-1" href="{% url 'ticket-create' %}"><i class="bi bi bi-plus-square"></i> Créer un ticket</a>
+        <a class="btn btn-outline-success ms-1" href="{% url 'review-create' %}"><i class="bi bi bi-plus-square"></i> Créer une critique</a>
+      </div>
+    {% endif %}
 
     {% for instance in tickets_and_reviews %}
       {% if instance|model_type == 'Ticket' %}
