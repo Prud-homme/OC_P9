@@ -14,17 +14,18 @@
 3. Create a virtual environment for the project with `$ python3 -m venv env`.
 4. Activate the virtual environment with `$ env\Scripts\activate` on windows or `$ source env/bin/activate` on macos or linux.
 5. Install project dependencies with `$ pip3 install -r requirements.txt`
-6. Create the project database with `$ python manage.py migrate`
-7. Run the server with `$ python manage.py runserver`
+6. Run the server with `$ python manage.py runserver`
 
-When the server is running after step 7 of the procedure, the Web App can be launch from the URL: [http://localhost:8000](http://localhost:8000 "LitReview Web App").
+When the server is running after step 6 of the procedure, the Web App can be launch from the URL: [http://localhost:8000](http://localhost:8000 "LitReview Web App").
 
-Steps 1-3 and 5-6 are only required for initial installation. For subsequent launches of the Web App, you only have to execute steps 4 and 7 from the root folder of the project.
+Steps 1-3 and 5 are only required for initial installation. For subsequent launches of the Web App, you only have to execute steps 4 and 6 from the root folder of the project.
 
 🗒️ *Notes:*
 
+* *To reset the database you can delete db.sqlite3 file and run `$ python manage.py migrate` to create a new empty database*
 * *Depending on the installation of python it is possible that the `python3` command is not recognized under windows. In this case, you will have to replace `python3` by `python`.*
 * *To disable the virtual environment, run: `$ deactivate`.*
+
 
 ## Features for users
 
