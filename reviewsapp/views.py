@@ -68,9 +68,7 @@ def ticket_delete(request, ticket_id):
 
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == "POST":
-        # supprimer le groupe de la base de données
         ticket.delete()
-        # rediriger vers la liste des groupes
         messages.success(request, "Le ticket a été supprimé")
         return redirect("home")
 
@@ -84,9 +82,7 @@ def ticket_update(request, ticket_id):
     if request.method == "POST":
         form = forms.TicketForm(request.POST, request.FILES, instance=ticket)
         if form.is_valid():
-            # mettre à jour le groupe existant dans la base de données
             form.save()
-            # rediriger vers la page détaillée du groupe que nous venons de mettre à jour
             messages.success(request, "Le ticket a été modifié")
             return redirect("home")
     else:
@@ -139,9 +135,7 @@ def review_delete(request, review_id):
 
     review = get_object_or_404(models.Review, id=review_id)
     if request.method == "POST":
-        # supprimer le groupe de la base de données
         review.delete()
-        # rediriger vers la liste des groupes
         messages.success(request, "La critique a été supprimée")
         return redirect("home")
 
@@ -154,7 +148,6 @@ def review_update(request, review_id):
 
     if request.method == "POST":
         form = forms.ReviewForm(request.POST, request.FILES, instance=review)
-        # form.ticket = review.ticket
         if form.is_valid():
             review.save()
             messages.success(request, "La critique a été modifiée")
@@ -210,9 +203,7 @@ def follow_delete(request, follow_user_id):
     )
     followed_user = get_object_or_404(get_user_model(), id=follow_user_id)
     if request.method == "POST":
-        # supprimer l'abonnement de la base de données
         follow.delete()
-        # rediriger vers la page abonnement
         messages.success(request, f"Vous vous êtes désabonné de {followed_user}")
         return redirect("follow")
 
