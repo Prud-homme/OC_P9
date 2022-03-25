@@ -15,7 +15,7 @@ def feed(request):
         for obj in models.UserFollows.objects.filter(user__exact=request.user)
     ]
     followed_users.append(request.user)
-    
+
     tickets = models.Ticket.objects.filter(user__in=followed_users)
     reviews = models.Review.objects.filter(user__in=followed_users)
 
