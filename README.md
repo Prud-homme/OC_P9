@@ -11,10 +11,16 @@
 
 1. Clone this repository using `$ git clone https://github.com/Prud-homme/OC_P9.git` (you can also download the code [as a zip file](https://github.com/Prud-homme/OC_P9/archive/refs/heads/main.zip))
 2. Move to the OC_P9 root folder with `$ cd OC_P9`
-3. Create a virtual environment for the project with `$ python3 -m venv env`.
-4. Activate the virtual environment with `$ env\Scripts\activate` on windows or `$ source env/bin/activate` on macos or linux.
+3. Create a virtual environment for the project with 
+  * `$ python -m venv env` on windows
+  * `$ python3 -m venv env` on macos or linux
+4. Activate the virtual environment with 
+  * `$ env\Scripts\activate` on windows
+  * `$ source env/bin/activate` on macos or linux
 5. Install project dependencies with `$ pip3 install -r requirements.txt`
-6. Run the server with `$ python manage.py runserver`
+6. Run the server with
+  * `$ python manage.py runserver` on windows
+  * `$ python3 manage.py runserver` on macos or linux
 
 When the server is running after step 6 of the procedure, the Web App can be launch from the URL: [http://localhost:8000](http://localhost:8000 "LitReview Web App").
 
@@ -23,7 +29,6 @@ Steps 1-3 and 5 are only required for initial installation. For subsequent launc
 🗒️ *Notes:*
 
 * *To reset the database you can delete db.sqlite3 file and run `$ python manage.py migrate` to create a new empty database*
-* *Depending on the installation of python it is possible that the `python3` command is not recognized under windows. In this case, you will have to replace `python3` by `python`.*
 * *To disable the virtual environment, run: `$ deactivate`.*
 
 
@@ -38,9 +43,9 @@ Steps 1-3 and 5 are only required for initial installation. For subsequent launc
 * Follow other users by entering their username,
 * View who they follow and unfollow whoever they want. 
 
-## flake8
+## Flake8
 
-flake8 allows you to validate your Python code against the PEP 8 coding conventions and pyflakes.
+Flake8 helps prevent things like syntax errors, typos, bad formatting, incorrect style, etc.
+By using it on my code, I make sure I'm following the PEP8 standard.
 
-The .flake8 file allows to configure flake8 and thus it will be enough to launch the `$ flake8` command to generate the report.
 The report is generated in the *flake-report* folder under the name *index.html*. To open the report open the *index.html* file with a web browser.
