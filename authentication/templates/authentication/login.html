@@ -33,10 +33,25 @@
         </div>
 
         {% csrf_token %}
-        <div class="bg-light rounded align-self-end mt-2">
+        <div class="bg-light rounded align-self-end mt-2 mb-1">
           <button class="btn btn-outline-dark" type="submit" ><i class="bi bi-box-arrow-in-right"></i> Se connecter</button>
         </div>
-
+        {% if form.non_field_errors %}
+        <div class="maxw-px-400 alert alert-danger">
+          <strong>{{ form.non_field_errors|escape }}</strong>
+        </div>
+        {% endif %}
+        {% if form.username.errors %}
+        <div class="maxw-px-400 alert alert-danger">
+          <strong>{{ form.username.errors|escape }}</strong>
+        </div>
+        {% endif %}
+        {% if form.password.errors %}
+        <div class="maxw-px-400 alert alert-danger">
+          <strong>{{ form.password.errors|escape }}</strong>
+        </div>
+        {% endif %}
+        
       </form>
     </div>
   </div>  
