@@ -34,7 +34,7 @@ urlpatterns = [
     ),
     path("logout/", authentication.views.UserLogoutView.as_view(), name="logout"),
     path("signup/", authentication.views.signup_page, name="signup"),
-    path("home/", reviewsapp.views.home, name="home"),
+    path("home/", reviewsapp.views.feed, name="home"),
     path("ticket/create/", reviewsapp.views.ticket_create, name="ticket-create"),
     path(
         "ticket/<int:ticket_id>/delete/",
@@ -68,7 +68,7 @@ urlpatterns = [
         reviewsapp.views.follow_delete,
         name="follow-delete",
     ),
-    path("post/", reviewsapp.views.post, name="post"),
+    path("posts/", reviewsapp.views.my_posts, name="posts"),
 ]
 
 if settings.DEBUG:

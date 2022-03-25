@@ -9,12 +9,13 @@ from . import forms, models
 
 
 @login_required
-def home(request):
+def feed(request):
     followed_users = [
         obj.followed_user
         for obj in models.UserFollows.objects.filter(user__exact=request.user)
     ]
-
+    followed_users.append(request.user)
+    
     tickets = models.Ticket.objects.filter(user__in=followed_users)
     reviews = models.Review.objects.filter(user__in=followed_users)
 
@@ -27,11 +28,11 @@ def home(request):
         "tickets_and_reviews": tickets_and_reviews,
     }
 
-    return render(request, "reviewsapp/home.html", context=context)
+    return render(request, "reviewsapp/posts.html", context=context)
 
 
 @login_required
-def post(request):
+def my_posts(request):
 
     tickets = models.Ticket.objects.filter(user__exact=request.user)
     reviews = models.Review.objects.filter(user__exact=request.user)
@@ -44,7 +45,7 @@ def post(request):
     context = {
         "tickets_and_reviews": tickets_and_reviews,
     }
-    return render(request, "reviewsapp/home.html", context=context)
+    return render(request, "reviewsapp/posts.html", context=context)
 
 
 @login_required
@@ -119,7 +120,7 @@ def review_create(request, ticket_id=None):
             review.ticket = ticket
             review.user = request.user
             review.save()
-            messages.success(request, "La critique a été publié")
+            messages.success(request, "La critique a été publiée")
             return redirect("home")
 
     return render(
@@ -141,7 +142,7 @@ def review_delete(request, review_id):
         # supprimer le groupe de la base de données
         review.delete()
         # rediriger vers la liste des groupes
-        messages.success(request, "La critique a été supprimé")
+        messages.success(request, "La critique a été supprimée")
         return redirect("home")
 
     return render(request, "reviewsapp/review_delete.html", {"review": review})
@@ -156,7 +157,7 @@ def review_update(request, review_id):
         # form.ticket = review.ticket
         if form.is_valid():
             review.save()
-            messages.success(request, "La critique a été modifié")
+            messages.success(request, "La critique a été modifiée")
             return redirect("home")
     else:
         form = forms.ReviewForm(instance=review)
@@ -188,6 +189,7 @@ def follow(request):
             get_user_model(), username__exact=request.POST["followed_user"]
         )
         follow.save()
+        messages.success(request, f"Vous vous êtes abonné à {follow.followed_user}")
         return redirect("follow")
 
     context = {
@@ -211,7 +213,7 @@ def follow_delete(request, follow_user_id):
         # supprimer l'abonnement de la base de données
         follow.delete()
         # rediriger vers la page abonnement
-        messages.success(request, "Vous vous êtes désabonnés")
+        messages.success(request, f"Vous vous êtes désabonné de {followed_user}")
         return redirect("follow")
 
     return render(

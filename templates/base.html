@@ -27,7 +27,7 @@
                            <a class="nav-link {% if request.resolver_match.url_name == 'home' %}fw-bold active{% endif %}" aria-current="page" href="{% url 'home' %}">Flux</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link {% if request.resolver_match.url_name == 'post' %}fw-bold active{% endif %}" href="{% url 'post' %}">Posts</a>
+                           <a class="nav-link {% if request.resolver_match.url_name == 'post' %}fw-bold active{% endif %}" href="{% url 'posts' %}">Posts</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link {% if request.resolver_match.url_name == 'follow' %}fw-bold active{% endif %}" href="{% url 'follow' %}">Abonnements</a>
