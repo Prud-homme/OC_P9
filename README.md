@@ -7,7 +7,7 @@
 
 ## Installation and execution using venv and pip
 
-⚠️ Git and Python must be installed first.
+⚠️ Git and Python 3.8+ must be installed first.
 
 1. Clone this repository using `$ git clone https://github.com/Prud-homme/OC_P9.git` (you can also download the code [as a zip file](https://github.com/Prud-homme/OC_P9/archive/refs/heads/main.zip))
 2. Move to the OC_P9 root folder with `$ cd OC_P9`
