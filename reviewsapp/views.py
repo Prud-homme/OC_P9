@@ -183,7 +183,7 @@ def follow(request):
         if len(get_user_model().objects.filter(username__exact=followed_user)) != 1:
             messages.warning(request, f"L'utilisateur {followed_user} n'existe pas.")
             return redirect("follow")
-            
+
         follow.followed_user = get_object_or_404(
             get_user_model(), username__exact=followed_user
         )
