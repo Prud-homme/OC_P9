@@ -178,8 +178,14 @@ def follow(request):
     if request.method == "POST":
         follow = models.UserFollows()
         follow.user = request.user
+
+        followed_user = request.POST["followed_user"]
+        if len(get_user_model().objects.filter(username__exact=followed_user)) != 1:
+            messages.warning(request, f"L'utilisateur {followed_user} n'existe pas.")
+            return redirect("follow")
+            
         follow.followed_user = get_object_or_404(
-            get_user_model(), username__exact=request.POST["followed_user"]
+            get_user_model(), username__exact=followed_user
         )
         follow.save()
         messages.success(request, f"Vous vous êtes abonné à {follow.followed_user}")
