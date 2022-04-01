@@ -80,7 +80,7 @@
                }, 3000); // <-- time in milliseconds, 1000 =  1 sec
          });
       </script>
-
+      {% if request.resolver_match.url_name == 'follow' %}
       <script>
          // Limit user as showing in follow search
          var search = document.querySelector('#followed_user');
@@ -97,5 +97,6 @@
              results.appendChild(set);
          });
       </script>
+      {% endif %}
    </body>
 </html>
